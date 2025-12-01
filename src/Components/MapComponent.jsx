@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
+// import { mapStats } from './Data/mapStats';
 import {
   MapContainer,
   TileLayer,
@@ -8,12 +10,12 @@ import {
   useMap,
 } from 'react-leaflet';
 import {
+  ArrowRight,
+  Zap,
   AlertTriangle,
   WifiOff,
   Activity,
   Layers,
-  ArrowRight,
-  Zap,
 } from 'lucide-react';
 
 // Dustbin container locations across Port Harcourt
@@ -68,7 +70,8 @@ const generateDustbinLocations = () => {
   const radius = 0.08; // Approximately 8km radius
 
   // Generate 196 random locations scattered across Port Harcourt
-  for (let i = 0; i < 196; i++) {
+  for (let i = 0; i < 120; i++) {
+    //196
     const angle = Math.random() * Math.PI * 2;
     const distance = Math.sqrt(Math.random()) * radius;
 
@@ -219,21 +222,14 @@ export default function DeviceTrackingMap() {
             className='bg-surface rounded-2xl shadow-xl overflow-hidden border border-border'
           >
             {/* Header */}
-            <div className='p-6 bg-gradient-to-r from-accent to-info text-background'>
+            <div className='p-6 to-info text-background'>
               <div className='flex items-center justify-between'>
                 <div>
-                  <h2 className='text-2xl font-bold mb-1'>
+                  <h2 className='text-xlfont-bold mb-1 text-text font-bold'>
                     Smart Dustbin Monitoring
                   </h2>
-                  <p className='text-background/80 text-sm'>
-                    Port Harcourt, Rivers • GPS + SIM7600G-H Enabled
-                  </p>
+                  <p className='text-text text-sm'>Map Statistics</p>
                 </div>
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className='w-3 h-3 bg-success rounded-full shadow-lg'
-                />
               </div>
             </div>
 
