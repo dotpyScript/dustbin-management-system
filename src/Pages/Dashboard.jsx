@@ -1,5 +1,4 @@
 // File: Pages/Dashboard.jsx
-
 import Sidebar from '../Components/Sidebar';
 import Navbar from '../Components/Navbar';
 import Header from '../Components/Header';
@@ -9,7 +8,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 // ✅ Import both from kpiData.js
-import { KpiData, SecondaryStats } from '../Components/Data/KpiData';
+import { kpiData, secondaryStats } from '../Components/Data/Kpidata';
+import MapComponent from '../Components/MapComponent';
 
 export function Dashboard() {
   const [collapsed, setCollapsed] = useState(false);
@@ -78,7 +78,7 @@ export function Dashboard() {
                 variants={itemVariants}
                 className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'
               >
-                {KpiData.map((kpi) => (
+                {kpiData.map((kpi) => (
                   <Kpi
                     key={kpi.title}
                     title={kpi.title}
@@ -92,6 +92,9 @@ export function Dashboard() {
                   />
                 ))}
               </motion.div>
+
+              {/* MAP COMPONENT - NEW */}
+              <MapComponent />
 
               {/* Secondary Section - Two Columns */}
               <motion.div
@@ -111,7 +114,7 @@ export function Dashboard() {
                     animate='visible'
                     className='grid grid-cols-1 md:grid-cols-3 gap-6'
                   >
-                    {SecondaryStats.map((stat) => (
+                    {secondaryStats.map((stat) => (
                       <Kpi
                         key={stat.title}
                         title={stat.title}
